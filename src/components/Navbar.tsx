@@ -8,6 +8,7 @@ const links = [
   { label: "About", href: "#about" },
   { label: "Skills", href: "#skills" },
   { label: "Projects", href: "#projects" },
+  { label: "Certificates", href: "#certificates" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -44,7 +45,7 @@ export default function Navbar() {
           </Link>
 
           {/* Links */}
-          <ul className="hidden md:flex items-center gap-8">
+          <ul className="hidden lg:flex items-center gap-8">
             {links.map((link) => (
               <li key={link.href}>
                 <Link
@@ -62,7 +63,7 @@ export default function Navbar() {
             href="/assets/Resume-MedOussamaBraiek.pdf"
             download="Resume-MedOussamaBraiek.pdf"
             target="_blank"
-            className="hidden md:inline-block font-mono text-xs tracking-widest uppercase px-4 py-2 border border-black/10 text-text hover:bg-text hover:text-bg transition-all duration-200 shrink-0"
+            className="hidden lg:inline-block font-mono text-xs tracking-widest uppercase px-4 py-2 border border-black/10 text-text hover:bg-text hover:text-bg transition-all duration-200 shrink-0"
           >
             Resume ↗
           </Link>
@@ -70,7 +71,7 @@ export default function Navbar() {
           {!menuOpen && (
             <button
               onClick={() => setMenuOpen(!menuOpen)}
-              className="md:hidden flex flex-col justify-center items-center w-8 h-8 gap-1.5 cursor-pointer"
+              className="lg:hidden flex flex-col justify-center items-center w-8 h-8 gap-1.5 cursor-pointer"
               aria-label="Toggle menu"
             >
               <Menu />
@@ -79,7 +80,7 @@ export default function Navbar() {
           {menuOpen && (
             <button
               onClick={() => setMenuOpen(!menuOpen)}
-              className="md:hidden flex flex-col justify-center items-center w-8 h-8 gap-1.5 cursor-pointer"
+              className="lg:hidden flex flex-col justify-center items-center w-8 h-8 gap-1.5 cursor-pointer"
               aria-label="Toggle menu"
             >
               <X />
@@ -89,7 +90,7 @@ export default function Navbar() {
       </header>
 
       <div
-        className={`fixed inset-0 z-40 bg-bg flex flex-col justify-center items-center gap-10 transition-all duration-300 md:hidden ${
+        className={`fixed inset-0 z-40 bg-bg flex flex-col justify-center items-center gap-10 transition-all duration-300 lg:hidden ${
           menuOpen
             ? "opacity-100 pointer-events-auto"
             : "opacity-0 pointer-events-none"
