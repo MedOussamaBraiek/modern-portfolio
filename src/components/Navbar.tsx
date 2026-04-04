@@ -59,7 +59,8 @@ export default function Navbar() {
 
           {/* CTA */}
           <Link
-            href="/resume.pdf"
+            href="/assets/Resume-MedOussamaBraiek.pdf"
+            download="Resume-MedOussamaBraiek.pdf"
             target="_blank"
             className="hidden md:inline-block font-mono text-xs tracking-widest uppercase px-4 py-2 border border-black/10 text-text hover:bg-text hover:text-bg transition-all duration-200 shrink-0"
           >
@@ -105,7 +106,8 @@ export default function Navbar() {
           </Link>
         ))}
         <Link
-          href="/resume.pdf"
+          href="/assets/Resume-MedOussamaBraiek.pdf"
+          download="/assets/Resume-MedOussamaBraiek.pdf"
           target="_blank"
           onClick={() => setMenuOpen(false)}
           className="mt-4 font-mono text-xs tracking-widest uppercase px-6 py-3 border border-black/10 text-text"
