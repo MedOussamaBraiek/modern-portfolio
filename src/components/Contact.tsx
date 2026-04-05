@@ -95,7 +95,7 @@ const Contact = () => {
                   Email
                 </span>
                 <span className="text-sm font-semibold text-text">
-                  your@email.com
+                  oussemabraiek@email.com
                 </span>
               </div>
               <span className="text-muted group-hover:text-text group-hover:translate-x-1 transition-all duration-200">
