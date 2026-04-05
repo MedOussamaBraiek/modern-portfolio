@@ -68,29 +68,19 @@ export default function Navbar() {
             Resume ↗
           </Link>
 
-          {!menuOpen && (
-            <button
-              onClick={() => setMenuOpen(!menuOpen)}
-              className="lg:hidden flex flex-col justify-center items-center w-8 h-8 gap-1.5 cursor-pointer"
-              aria-label="Toggle menu"
-            >
-              <Menu />
-            </button>
-          )}
-          {menuOpen && (
-            <button
-              onClick={() => setMenuOpen(!menuOpen)}
-              className="lg:hidden flex flex-col justify-center items-center w-8 h-8 gap-1.5 cursor-pointer"
-              aria-label="Toggle menu"
-            >
-              <X />
-            </button>
-          )}
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="lg:hidden flex justify-center items-center w-8 h-8 cursor-pointer"
+            aria-label="Toggle menu"
+          >
+            {menuOpen ? <X size={22} /> : <Menu size={22} />}
+          </button>
         </nav>
       </header>
 
       <div
-        className={`fixed inset-0 z-40 bg-bg flex flex-col justify-center items-center gap-10 transition-all duration-300 lg:hidden ${
+        style={{ backgroundColor: "#faf8f3" }}
+        className={`fixed inset-0 z-40 bg-bg pt-16 flex flex-col justify-center items-center gap-10 transition-all duration-300 lg:hidden ${
           menuOpen
             ? "opacity-100 pointer-events-auto"
             : "opacity-0 pointer-events-none"
