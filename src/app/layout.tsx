@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Oussama Braiek — Software Engineer",
     description:
-      "Impression 3D de précision — figurines anime, Formula 1, décoration et plus.",
+      "Full Stack Developer & AI Engineer. Building fast, clean web & mobile applications.",
     url: "https://braiek-mohamed-oussama.vercel.app/",
     siteName: "Oussama Braiek — Software Engineer",
     images: [
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Oussama Braiek — Software Engineer",
     description:
-      "Impression 3D de précision — figurines anime, Formula 1, décoration et plus.",
+      "Full Stack Developer & AI Engineer. Building fast, clean web & mobile applications.",
     images: ["https://braiek-mohamed-oussama.vercel.app/assets/oussama.jpg"],
   },
 };
