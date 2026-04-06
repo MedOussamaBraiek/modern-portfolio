@@ -192,7 +192,7 @@ const projects = [
     tags: ["Next.js", "Zustand", "ShadCN", "Vercel"],
     url: "https://fabrionlab.vercel.app",
     cover: "/assets/projects/fabrion.jpg",
-    featured: false,
+    featured: true,
   },
   {
     id: 2,
@@ -203,7 +203,7 @@ const projects = [
     tags: ["Next.js", "LangChain", "RAG"],
     url: "https://oussama-ai-portfolio.vercel.app/",
     cover: "/assets/projects/ai-portfolio.jpg",
-    featured: true,
+    featured: false,
   },
   {
     id: 3,
