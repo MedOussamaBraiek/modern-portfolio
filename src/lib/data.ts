@@ -192,7 +192,7 @@ const projects = [
     tags: ["Next.js", "Zustand", "ShadCN", "Vercel"],
     url: "https://fabrionlab.vercel.app",
     cover: "/assets/projects/fabrion.jpg",
-    featured: true,
+    featured: false,
   },
   {
     id: 2,
@@ -201,9 +201,9 @@ const projects = [
     description:
       "AI-powered portfolio using RAG — answers questions about my work and skills in natural language.",
     tags: ["Next.js", "LangChain", "RAG"],
-    url: null,
+    url: "https://oussama-ai-portfolio.vercel.app/",
     cover: "/assets/projects/ai-portfolio.jpg",
-    featured: false,
+    featured: true,
   },
   {
     id: 3,
