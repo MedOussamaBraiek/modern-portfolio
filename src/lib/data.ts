@@ -76,6 +76,11 @@ const skills = [
         invert: true,
       },
       {
+        name: "FastApi",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg",
+        invert: true,
+      },
+      {
         name: "Prisma",
         icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prisma/prisma-original.svg",
         invert: true,
