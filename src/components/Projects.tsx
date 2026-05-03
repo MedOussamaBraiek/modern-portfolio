@@ -11,7 +11,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 function ProjectCard({ project }: { project: (typeof projects)[0] }) {
   return (
-    <div className="group flex flex-col overflow-hidden border border-black/8 hover:border-black/20 transition-all duration-300">
+    <div className="group flex flex-col overflow-hidden border border-black/8 hover:border-black/20 transition-all duration-300 h-110">
       {/* Image */}
       <div className="relative overflow-hidden h-50">
         <Image
@@ -67,15 +67,15 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
 
 function FeaturedCard({ project }: { project: (typeof projects)[0] }) {
   return (
-    <div className="group flex flex-col md:flex-row overflow-hidden border border-black/8 hover:border-black/20 transition-all duration-300">
+    <div className="group flex flex-col md:flex-row overflow-hidden border border-black/8 hover:border-black/20 transition-all duration-300 h-60">
       {/* Image */}
-      <div className="relative overflow-hidden md:w-1/2 h-60 md:h-auto">
+      <div className="relative overflow-hidden md:w-1/2 h-ful">
         <Image
           src={project.cover}
           alt={project.title}
           width={800}
           height={800}
-          className="w-full h-full object-cover grayscale-20 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
+          className="w-full h-full object-fill grayscale-20 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
         />
         <div className="absolute inset-0 bg-linear-to-t md:bg-linear-to-r from-bg/50 to-transparent" />
       </div>

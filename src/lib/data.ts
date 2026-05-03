@@ -185,6 +185,17 @@ const skills = [
 const projects = [
   {
     id: 1,
+    title: "Quizzy AI",
+    type: "AI · Full-Stack",
+    description:
+      "Adaptive quiz app that turns any PDF into a personalized quiz. Uses RAG to ground questions in your document, and a LangGraph agent to adjust difficulty and explain mistakes in real time.",
+    tags: ["FastAPI", "Next.js", "LangGraph", "LangChain", "FAISS", "Groq"],
+    url: "https://quizzy--ai.vercel.app/",
+    cover: "/assets/projects/quizzy.png",
+    featured: true,
+  },
+  {
+    id: 2,
     title: "FabrionLab",
     type: "E-Commerce · Brand",
     description:
@@ -192,10 +203,10 @@ const projects = [
     tags: ["Next.js", "Zustand", "ShadCN", "Vercel"],
     url: "https://fabrionlab.vercel.app",
     cover: "/assets/projects/fabrion.jpg",
-    featured: true,
+    featured: false,
   },
   {
-    id: 2,
+    id: 3,
     title: "Oussama's AI",
     type: "AI · Portfolio",
     description:
@@ -206,7 +217,7 @@ const projects = [
     featured: false,
   },
   {
-    id: 3,
+    id: 4,
     title: "Jocker Shop",
     type: "E-Commerce",
     description:
@@ -217,7 +228,7 @@ const projects = [
     featured: false,
   },
   {
-    id: 4,
+    id: 5,
     title: "Hablar",
     type: "Real-Time · Chat",
     description:
@@ -225,6 +236,17 @@ const projects = [
     tags: ["React", "Socket.IO", "MongoDB"],
     url: "https://hablar.onrender.com",
     cover: "/assets/projects/hablar.png",
+    featured: false,
+  },
+  {
+    id: 6,
+    title: "Responsive Dashboard",
+    type: "Mobile · Dashboard",
+    description:
+      "Cross-platform Flutter dashboard with Firebase Auth, data charts, and dark/light mode.",
+    tags: ["Flutter", "Firebase", "Google Auth"],
+    url: null,
+    cover: "/assets/projects/flutter-dashboard.png",
     featured: false,
   },
   //   {
@@ -238,17 +260,6 @@ const projects = [
   //     cover: "/assets/projects/dr-karim.png",
   //     featured: false,
   //   },
-  {
-    id: 5,
-    title: "Responsive Dashboard",
-    type: "Mobile · Dashboard",
-    description:
-      "Cross-platform Flutter dashboard with Firebase Auth, data charts, and dark/light mode.",
-    tags: ["Flutter", "Firebase", "Google Auth"],
-    url: null,
-    cover: "/assets/projects/flutter-dashboard.png",
-    featured: false,
-  },
 ];
 
 const certificates = [
