@@ -4,6 +4,7 @@ const nextConfig: NextConfig = {
   images: {
     domains: [
       "cdn.jsdelivr.net",
+      "img.jsdelivr.com",
       "registry.npmmirror.com",
       "raw.githubusercontent.com",
       "ui.shadcn.com",

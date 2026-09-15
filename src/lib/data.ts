@@ -136,6 +136,10 @@ const skills = [
         name: "RAG",
         icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
       },
+      {
+        name: "OpenAI",
+        icon: "https://img.jsdelivr.com/github.com/openai.png",
+      },
     ],
   },
   {
@@ -268,6 +272,12 @@ const projects = [
 ];
 
 const certificates = [
+  {
+    name: "AI Engineering DataCamp",
+    issuer: "DataCamp",
+    year: "2026",
+    image: "/assets/certificates/certif-ai-engineer-datacamp.PNG",
+  },
   {
     name: "Full Stack Web Bootcamp",
     issuer: "Udemy",

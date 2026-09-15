@@ -3,10 +3,20 @@
 import { certificates } from "@/lib/data";
 import gsap from "gsap";
 import Image from "next/image";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const Certificates = () => {
   const ref = useRef<HTMLDivElement>(null);
+
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
+  const openModal = (imgSrc: string) => {
+    setSelectedImage(imgSrc || "");
+  };
+
+  const closeModal = () => {
+    setSelectedImage(null);
+  };
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -50,14 +60,15 @@ const Certificates = () => {
         {certificates.map((cert) => (
           <div
             key={cert.name}
-            className=" p-4 bg-surface border border-black/6 rounded-lg hover:shadow-md transition-all duration-200"
+            className="flex flex-col p-4 bg-surface border border-black/6 rounded-lg hover:shadow-md transition-all duration-200"
+            onClick={() => openModal(cert.image)}
           >
             <Image
               src={cert.image}
               alt={cert.name}
               width={400}
               height={250}
-              className="rounded-md object-cover"
+              className="rounded-md object-cover flex-1"
             />
             <p className="font-semibold text-text text-sm mt-2">{cert.name}</p>
             <p className="font-mono text-xs text-muted">
@@ -65,6 +76,30 @@ const Certificates = () => {
             </p>
           </div>
         ))}
+
+        {/* Modal */}
+        {selectedImage && (
+          <div
+            className="fixed inset-0 bg-black/50 bg-opacity-70 flex items-center justify-center z-2000"
+            onClick={closeModal}
+          >
+            <div className="relative">
+              <Image
+                src={selectedImage}
+                alt="Selected Certificate"
+                className="max-w-[90vw] max-h-[90vh] sm:max-w-[70vw] sm:max-h-[70vh] rounded-lg w-auto h-auto"
+                width={600}
+                height={600}
+              />
+              <button
+                onClick={closeModal}
+                className="absolute top-2 right-2 text-white text-2xl bg-red-500 rounded-full w-8 h-8 flex items-center justify-center cursor-pointer"
+              >
+                ×
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );
