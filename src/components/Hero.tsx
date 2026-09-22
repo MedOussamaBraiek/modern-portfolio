@@ -4,8 +4,10 @@ import { useEffect, useRef } from "react";
 import Link from "next/link";
 import gsap from "gsap";
 import Image from "next/image";
+import { useLanguage } from "@/context/LanguageContext";
 
 const Hero = () => {
+  const { t } = useLanguage();
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -32,19 +34,18 @@ const Hero = () => {
         <div className="flex flex-col gap-6 max-w-xl">
           <div className="hero-item">
             <span className="font-mono text-xs tracking-[0.14em] uppercase text-muted border border-black/10 px-3 py-1.5 rounded-full">
-              Available for work
+              {t.hero.badge}
             </span>
           </div>
 
           <h1 className="hero-item text-5xl md:text-6xl lg:text-7xl font-bold text-text leading-[1.05] tracking-tight">
-            Full Stack <br />
-            <span className="text-accent">Developer</span> &<br />
-            AI Engineer
+            {t.hero.line1} <br />
+            <span className="text-accent">{t.hero.line2}</span> &<br />
+            {t.hero.line3}
           </h1>
 
           <p className="hero-item font-mono text-sm text-muted leading-relaxed max-w-sm">
-            I build fast, clean web applications and AI-powered products. Based
-            in Tunisia, open for new opportunities worldwide.
+            {t.hero.description}
           </p>
 
           <div className="hero-item flex items-center gap-4">
@@ -52,13 +53,13 @@ const Hero = () => {
               href="#projects"
               className="px-6 py-3 bg-text text-bg text-sm font-semibold hover:bg-accent hover:text-text transition-all duration-300"
             >
-              View Projects
+              {t.hero.viewProjects}
             </Link>
             <Link
               href="#contact"
               className="px-6 py-3 border border-black/10 text-text text-sm font-semibold hover:border-black/30 transition-all duration-300"
             >
-              Contact Me
+              {t.hero.contactMe}
             </Link>
           </div>
 
@@ -94,7 +95,6 @@ const Hero = () => {
               height={500}
               className="w-full h-full object-cover object-top  hover:grayscale-0 transition-all duration-500"
             />
-            {/* grayscale */}
           </div>
         </div>
       </div>

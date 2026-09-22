@@ -1,20 +1,24 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
-
-const links = [
-  { label: "About", href: "#about" },
-  { label: "Skills", href: "#skills" },
-  { label: "Projects", href: "#projects" },
-  { label: "Certificates", href: "#certificates" },
-  { label: "Contact", href: "#contact" },
-];
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Navbar() {
+  const { locale, t, setLocale } = useLanguage();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [resumeOpen, setResumeOpen] = useState(false);
+  const resumeRef = useRef<HTMLDivElement>(null);
+
+  const links = [
+    { label: t.navbar.about, href: "#about" },
+    { label: t.navbar.skills, href: "#skills" },
+    { label: t.navbar.projects, href: "#projects" },
+    { label: t.navbar.certificates, href: "#certificates" },
+    { label: t.navbar.contact, href: "#contact" },
+  ];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -25,6 +29,16 @@ export default function Navbar() {
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
   }, [menuOpen]);
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (resumeRef.current && !resumeRef.current.contains(e.target as Node)) {
+        setResumeOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   return (
     <>
@@ -58,15 +72,59 @@ export default function Navbar() {
             ))}
           </ul>
 
-          {/* CTA */}
-          <Link
-            href="/assets/Resume-MedOussamaBraiek.pdf"
-            download="Resume-MedOussamaBraiek.pdf"
-            target="_blank"
-            className="hidden lg:inline-block font-mono text-xs tracking-widest uppercase px-4 py-2 border border-black/10 text-text hover:bg-text hover:text-bg transition-all duration-200 shrink-0"
-          >
-            Resume ↗
-          </Link>
+          {/* Right controls */}
+          <div className="hidden lg:flex items-center gap-3">
+            {/* Language toggle */}
+            <button
+              onClick={() => setLocale(locale === "en" ? "fr" : "en")}
+              className="font-mono text-xs tracking-widest uppercase text-muted hover:text-text transition-colors duration-200 px-2 py-1"
+              aria-label="Switch language"
+            >
+              {locale === "en" ? "FR" : "EN"}
+            </button>
+
+            {/* Resume dropdown */}
+            <div className="relative" ref={resumeRef}>
+              <button
+                onClick={() => setResumeOpen((prev) => !prev)}
+                className="inline-flex items-center gap-1.5 font-mono text-xs tracking-widest uppercase px-4 py-2 border border-black/10 text-text hover:bg-text hover:text-bg transition-all duration-200 shrink-0"
+              >
+                {t.navbar.resume}
+                <span
+                  className={`text-[9px] transition-transform duration-200 ${
+                    resumeOpen ? "rotate-180" : ""
+                  }`}
+                >
+                  ▾
+                </span>
+              </button>
+
+              {resumeOpen && (
+                <div className="absolute right-0 top-full mt-1 border border-black/10 bg-bg shadow-sm flex flex-col min-w-[130px] z-10">
+                  <a
+                    href="/assets/Resume-MedOussamaBraiek-EN.pdf"
+                    download
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setResumeOpen(false)}
+                    className="font-mono text-[10px] tracking-widest uppercase px-4 py-3 text-text hover:bg-text hover:text-bg transition-all duration-200 flex items-center justify-between gap-3"
+                  >
+                    {t.navbar.resumeEN} <span>↗</span>
+                  </a>
+                  <a
+                    href="/assets/Resume-MedOussamaBraiek-FR.pdf"
+                    download
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setResumeOpen(false)}
+                    className="font-mono text-[10px] tracking-widest uppercase px-4 py-3 text-text hover:bg-text hover:text-bg transition-all duration-200 flex items-center justify-between gap-3 border-t border-black/10"
+                  >
+                    {t.navbar.resumeFR} <span>↗</span>
+                  </a>
+                </div>
+              )}
+            </div>
+          </div>
 
           <button
             onClick={() => setMenuOpen(!menuOpen)}
@@ -78,6 +136,7 @@ export default function Navbar() {
         </nav>
       </header>
 
+      {/* Mobile menu */}
       <div
         style={{ backgroundColor: "#faf8f3" }}
         className={`fixed inset-0 z-40 bg-bg pt-16 flex flex-col justify-center items-center gap-10 transition-all duration-300 lg:hidden ${
@@ -96,15 +155,38 @@ export default function Navbar() {
             {link.label}
           </Link>
         ))}
-        <Link
-          href="/assets/Resume-MedOussamaBraiek.pdf"
-          download="/assets/Resume-MedOussamaBraiek.pdf"
-          target="_blank"
-          onClick={() => setMenuOpen(false)}
-          className="mt-4 font-mono text-xs tracking-widest uppercase px-6 py-3 border border-black/10 text-text"
+
+        {/* Language toggle mobile */}
+        <button
+          onClick={() => setLocale(locale === "en" ? "fr" : "en")}
+          className="font-mono text-sm tracking-widest uppercase text-muted hover:text-text transition-colors duration-200"
         >
-          Resume ↗
-        </Link>
+          {locale === "en" ? "Passer en français" : "Switch to English"}
+        </button>
+
+        {/* Resume links mobile */}
+        <div className="flex items-center gap-3 mt-2">
+          <a
+            href="/assets/Resume-MedOussamaBraiek-EN.pdf"
+            download
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setMenuOpen(false)}
+            className="font-mono text-xs tracking-widest uppercase px-5 py-3 border border-black/10 text-text"
+          >
+            {t.navbar.resumeEN} ↗
+          </a>
+          <a
+            href="/assets/Resume-MedOussamaBraiek-FR.pdf"
+            download
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setMenuOpen(false)}
+            className="font-mono text-xs tracking-widest uppercase px-5 py-3 border border-black/10 text-text"
+          >
+            {t.navbar.resumeFR} ↗
+          </a>
+        </div>
       </div>
     </>
   );

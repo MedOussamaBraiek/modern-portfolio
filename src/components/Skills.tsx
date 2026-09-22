@@ -5,24 +5,26 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { skills } from "@/lib/data";
 import Image from "next/image";
+import { useLanguage } from "@/context/LanguageContext";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Skills() {
+  const { t } = useLanguage();
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.from(".skills-item", {
         scrollTrigger: {
-          trigger: ".skills-item", // element that triggers the animation when scrolled into view
-          start: "top 85%", // animation starts when the top of .skills-item hits 85% of the viewport
+          trigger: ".skills-item",
+          start: "top 85%",
         },
-        y: 30, // elements start 30px **lower** than their normal position
-        opacity: 0, // start invisible
-        duration: 0.8, // animation lasts 0.8 seconds
-        stagger: 0.08, // animate multiple items **one after another**, 0.08s delay
-        ease: "power3.out", // easing curve, makes animation smooth and natural
+        y: 30,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.08,
+        ease: "power3.out",
       });
     }, ref);
 
@@ -34,14 +36,14 @@ export default function Skills() {
       {/* Section label */}
       <div className="skills-item flex items-center gap-4 mb-16">
         <span className="font-mono text-xs tracking-[0.14em] uppercase text-muted">
-          02 — Skills
+          {t.skills.sectionLabel}
         </span>
         <div className="h-px flex-1 bg-black/8" />
       </div>
 
       <div className="skills-item mb-12">
         <h2 className="text-4xl md:text-5xl font-bold text-text tracking-tight">
-          My <span className="text-accent">Stack</span>
+          {t.skills.heading} <span className="text-accent">{t.skills.headingAccent}</span>
         </h2>
       </div>
 
@@ -50,7 +52,7 @@ export default function Skills() {
           <div key={group.category} className="skills-item flex flex-col gap-4">
             {/* Category label */}
             <span className="font-mono text-xs tracking-[0.14em] uppercase text-muted">
-              {group.category}
+              {t.skills.categories[group.category] ?? group.category}
             </span>
 
             {/* Tools */}

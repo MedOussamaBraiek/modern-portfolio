@@ -3,10 +3,12 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useLanguage } from "@/context/LanguageContext";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function About() {
+  const { t } = useLanguage();
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -32,7 +34,7 @@ export default function About() {
       {/* Section label */}
       <div className="about-item flex items-center gap-4 mb-16">
         <span className="font-mono text-xs tracking-[0.14em] uppercase text-muted">
-          01 — About
+          {t.about.sectionLabel}
         </span>
         <div className="h-px flex-1 bg-black/8" />
       </div>
@@ -41,50 +43,41 @@ export default function About() {
         {/* Left — Bio */}
         <div className="flex flex-col gap-6">
           <h2 className="about-item text-4xl md:text-5xl font-bold text-text leading-tight tracking-tight">
-            I build things <br />
-            <span className="text-accent">that matter.</span>
+            {t.about.heading} <br />
+            <span className="text-accent">{t.about.headingAccent}</span>
           </h2>
-          <p className="about-item text-muted leading-relaxed">
-            I&apos;m Oussama, a Full Stack Developer and AI Engineer based in
-            Tunisia. I care deeply about writing clean, maintainable code and
-            building products that are fast, accessible, and purposeful.
-          </p>
-          <p className="about-item text-muted leading-relaxed">
-            I work across the full stack — from database design to deployment —
-            and I&apos;m always looking for the next hard problem to solve.
-            Currently open to full-time remote roles or on-site opportunities
-            worldwide.
-          </p>
+          <p className="about-item text-muted leading-relaxed">{t.about.bio1}</p>
+          <p className="about-item text-muted leading-relaxed">{t.about.bio2}</p>
 
           {/* Education */}
           <div className="about-item flex flex-col gap-2 pt-4">
             <span className="font-mono text-xs tracking-[0.14em] uppercase text-muted mb-1">
-              Education
+              {t.about.educationLabel}
             </span>
             <div className="flex items-start justify-between gap-4 py-3 border-t border-black/8">
               <div>
                 <p className="font-semibold text-text text-sm">
-                  Engineering Degree · Software Development
+                  {t.about.degree1Title}
                 </p>
                 <p className="font-mono text-xs text-muted mt-0.5">
-                  Esprit University
+                  {t.about.degree1School}
                 </p>
               </div>
               <span className="font-mono text-xs text-muted shrink-0 pt-0.5">
-                2020 — 2023
+                {t.about.degree1Years}
               </span>
             </div>
             <div className="flex items-start justify-between gap-4 py-3 border-t border-black/8">
               <div>
                 <p className="font-semibold text-text text-sm">
-                  B.Sc. Computer Engineering
+                  {t.about.degree2Title}
                 </p>
                 <p className="font-mono text-xs text-muted mt-0.5">
-                  ISIMM University
+                  {t.about.degree2School}
                 </p>
               </div>
               <span className="font-mono text-xs text-muted shrink-0 pt-0.5">
-                2017 — 2020
+                {t.about.degree2Years}
               </span>
             </div>
           </div>
@@ -93,50 +86,36 @@ export default function About() {
         {/* Right — Experience */}
         <div className="about-item flex flex-col gap-2">
           <span className="font-mono text-xs tracking-[0.14em] uppercase text-muted mb-1">
-            Experience
+            {t.about.experienceLabel}
           </span>
 
           <div className="flex items-start justify-between gap-4 py-3 border-t border-black/8">
             <div>
-              <p className="font-semibold text-text text-sm">
-                Software Engineer — OLINDIAS
-              </p>
-              <p className="font-mono text-xs text-muted mt-0.5">
-                Built scalable web & mobile apps across MERN, Flutter, and
-                Kotlin.
-              </p>
+              <p className="font-semibold text-text text-sm">{t.about.exp1Title}</p>
+              <p className="font-mono text-xs text-muted mt-0.5">{t.about.exp1Desc}</p>
             </div>
             <span className="font-mono text-xs text-muted shrink-0 pt-0.5">
-              2023 — 2025
+              {t.about.exp1Years}
             </span>
           </div>
 
           <div className="flex items-start justify-between gap-4 py-3 border-t border-black/8">
             <div>
-              <p className="font-semibold text-text text-sm">
-                Software Engineer Intern — OLINDIAS
-              </p>
-              <p className="font-mono text-xs text-muted mt-0.5">
-                Built web & mobile interfaces and RESTful APIs for a Web
-                Analytics platform.
-              </p>
+              <p className="font-semibold text-text text-sm">{t.about.exp2Title}</p>
+              <p className="font-mono text-xs text-muted mt-0.5">{t.about.exp2Desc}</p>
             </div>
             <span className="font-mono text-xs text-muted shrink-0 pt-0.5">
-              2023 · 6 months
+              {t.about.exp2Years}
             </span>
           </div>
 
           <div className="flex items-start justify-between gap-4 py-3 border-t border-black/8">
             <div>
-              <p className="font-semibold text-text text-sm">
-                Frontend Developer Intern — OLINDIAS
-              </p>
-              <p className="font-mono text-xs text-muted mt-0.5">
-                Translated Figma designs into responsive React interfaces.
-              </p>
+              <p className="font-semibold text-text text-sm">{t.about.exp3Title}</p>
+              <p className="font-mono text-xs text-muted mt-0.5">{t.about.exp3Desc}</p>
             </div>
             <span className="font-mono text-xs text-muted shrink-0 pt-0.5">
-              2022 · 2 months
+              {t.about.exp3Years}
             </span>
           </div>
 
@@ -144,25 +123,25 @@ export default function About() {
             <div className="p-6 bg-surface flex flex-col gap-2">
               <span className="text-4xl font-bold text-text">10+</span>
               <span className="font-mono text-xs tracking-widest uppercase text-muted">
-                Projects Shipped
+                {t.about.projectsShipped}
               </span>
             </div>
             <div className="p-6 bg-surface flex flex-col gap-2">
               <span className="text-4xl font-bold text-text">3+</span>
               <span className="font-mono text-xs tracking-widest uppercase text-muted">
-                Years Building
+                {t.about.yearsBuilding}
               </span>
             </div>
             <div className="p-6 bg-surface flex flex-col gap-2">
               <span className="text-4xl font-bold text-text">3</span>
               <span className="font-mono text-xs tracking-widest uppercase text-muted">
-                Tech Stacks
+                {t.about.techStacks}
               </span>
             </div>
             <div className="p-6 bg-surface flex flex-col gap-2">
               <span className="text-4xl font-bold text-accent">Open</span>
               <span className="font-mono text-xs tracking-widest uppercase text-muted">
-                To Work
+                {t.about.openToWork}
               </span>
             </div>
           </div>

@@ -6,10 +6,17 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { projects } from "@/lib/data";
 import Image from "next/image";
+import { useLanguage } from "@/context/LanguageContext";
 
 gsap.registerPlugin(ScrollTrigger);
 
-function ProjectCard({ project }: { project: (typeof projects)[0] }) {
+function ProjectCard({
+  project,
+  visitLabel,
+}: {
+  project: (typeof projects)[0];
+  visitLabel: string;
+}) {
   return (
     <div className="group flex flex-col overflow-hidden border border-black/8 hover:border-black/20 transition-all duration-300 h-110">
       {/* Image */}
@@ -41,7 +48,7 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
               target="_blank"
               className="shrink-0 font-mono text-[10px] tracking-widest uppercase text-muted hover:text-text border border-black/10 hover:border-black/25 px-3 py-1.5 transition-all duration-200"
             >
-              Visit ↗
+              {visitLabel} ↗
             </Link>
           )}
         </div>
@@ -65,7 +72,13 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
   );
 }
 
-function FeaturedCard({ project }: { project: (typeof projects)[0] }) {
+function FeaturedCard({
+  project,
+  visitLabel,
+}: {
+  project: (typeof projects)[0];
+  visitLabel: string;
+}) {
   return (
     <div className="group flex flex-col md:flex-row overflow-hidden border border-black/8 hover:border-black/20 transition-all duration-300 md:h-60 h-110">
       {/* Image */}
@@ -94,7 +107,7 @@ function FeaturedCard({ project }: { project: (typeof projects)[0] }) {
                 target="_blank"
                 className="shrink-0 font-mono text-[10px] tracking-widest uppercase text-muted hover:text-text border border-black/10 hover:border-black/25 px-3 py-1.5 transition-all duration-200"
               >
-                Visit ↗
+                {visitLabel} ↗
               </Link>
             )}
           </div>
@@ -120,6 +133,7 @@ function FeaturedCard({ project }: { project: (typeof projects)[0] }) {
 }
 
 export default function Projects() {
+  const { t } = useLanguage();
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -148,28 +162,29 @@ export default function Projects() {
       {/* Section label */}
       <div className="project-item flex items-center gap-4 mb-16">
         <span className="font-mono text-xs tracking-[0.14em] uppercase text-muted">
-          03 — Projects
+          {t.projects.sectionLabel}
         </span>
         <div className="h-px flex-1 bg-black/8" />
       </div>
 
       <div className="project-item mb-12">
         <h2 className="text-4xl md:text-5xl font-bold text-text tracking-tight">
-          Selected <span className="text-accent">Work</span>
+          {t.projects.heading}{" "}
+          <span className="text-accent">{t.projects.headingAccent}</span>
         </h2>
       </div>
 
       <div className="flex flex-col gap-4">
         {/* Featured */}
         <div className="project-item">
-          <FeaturedCard project={featured} />
+          <FeaturedCard project={featured} visitLabel={t.projects.visit} />
         </div>
 
         {/* Grid */}
         <div className="grid md:grid-cols-2 gap-4">
           {rest.map((project) => (
             <div key={project.id} className="project-item">
-              <ProjectCard project={project} />
+              <ProjectCard project={project} visitLabel={t.projects.visit} />
             </div>
           ))}
         </div>

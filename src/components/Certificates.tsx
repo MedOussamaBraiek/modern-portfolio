@@ -4,8 +4,10 @@ import { certificates } from "@/lib/data";
 import gsap from "gsap";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import { useLanguage } from "@/context/LanguageContext";
 
 const Certificates = () => {
+  const { t } = useLanguage();
   const ref = useRef<HTMLDivElement>(null);
 
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -51,7 +53,7 @@ const Certificates = () => {
     <section id="certificates" className="py-32" ref={ref}>
       <div className="certif-header flex items-center gap-4 mb-16">
         <span className="font-mono text-xs tracking-[0.14em] uppercase text-muted">
-          04 — Certificates
+          {t.certificates.sectionLabel}
         </span>
         <div className="h-px flex-1 bg-black/8" />
       </div>
